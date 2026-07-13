@@ -1,31 +1,31 @@
-# ECG Asistido - demo prehospitalaria
+# SAMU ECG Asistido
 
-Prototipo funcional navegable de una aplicacion movil para lectura asistida de trazados cardiacos en contexto prehospitalario, rural y de urgencia.
+App web estatica de apoyo a la lectura inicial de electrocardiogramas y trazados cardiacos para personal de salud no especialista: TENS, enfermeria, medicos generales, equipos prehospitalarios, SAPU, SAR, postas rurales y servicios de urgencia.
 
-La demo esta pensada para recoger opinion de medicos, equipos de urgencia, personal prehospitalario, postas rurales, SAPU, SAR y posibles socios tecnicos.
+## Alcance clinico
 
-## Importante
+Esta herramienta ayuda a ordenar datos del paciente, mediciones del ECG y hallazgos visibles para entregar una orientacion de riesgo. No reemplaza criterio clinico, protocolos locales, regulacion medica, ECG formal ni evaluacion especializada.
 
-Este prototipo no analiza ECG reales, no usa inteligencia artificial real y no entrega diagnosticos medicos. Simula el flujo de trabajo, la experiencia de usuario, los mensajes de seguridad y la forma en que podria registrarse una sospecha inicial para posterior confirmacion intrahospitalaria.
+La app no realiza diagnostico autonomo ni interpreta automaticamente una imagen con IA. La lectura actual es guiada por los datos que ingresa el usuario.
 
-Uso previsto de esta version:
+## Funciones incluidas
 
-- Validar si el flujo es util en terreno.
-- Revisar lenguaje clinico y mensajes de seguridad.
-- Evaluar si las pantallas son claras para personal de urgencia.
-- Recoger observaciones antes de construir un MVP tecnico real.
+- Carga/captura de foto del ECG, tira de ritmo o monitor.
+- Registro de contexto clinico y sintomas.
+- Registro de frecuencia, PR, QRS, QT, cambios ST, ritmo y derivaciones.
+- Calculo aproximado de QTc por Bazett.
+- Clasificacion orientativa: rojo, amarillo, verde o no interpretable.
+- Sugerencias de accion segura segun hallazgos ingresados.
+- Guardado local de casos en el navegador.
+- Historial local.
+- Copia de resumen para compartir por canal institucional.
+- Vista imprimible.
+- Pauta de feedback medico.
+- Estilo visual inspirado en SAMU/Chile: azul, rojo y blanco.
 
-No debe utilizarse para tomar decisiones clinicas reales.
+## Como ejecutar localmente
 
-## Como probar la demo
-
-Abrir directamente:
-
-```text
-index.html
-```
-
-O levantar un servidor local desde esta carpeta:
+Abrir `index.html` directamente o levantar un servidor local:
 
 ```bash
 python -m http.server 8787
@@ -37,73 +37,53 @@ Luego abrir:
 http://127.0.0.1:8787
 ```
 
-## Publicar en GitHub Pages
+## GitHub Pages
 
-1. Crear un repositorio nuevo en GitHub.
-2. Subir todos los archivos de esta carpeta.
-3. Ir a `Settings` -> `Pages`.
-4. En `Build and deployment`, seleccionar:
-   - Source: `Deploy from a branch`
-   - Branch: `main`
-   - Folder: `/root`
-5. Guardar.
-6. GitHub entregara una URL publica para mostrar la demo.
+El proyecto incluye workflow en:
 
-## Flujo incluido
+```text
+.github/workflows/pages.yml
+```
 
-La demo permite recorrer:
+El despliegue se realiza desde la rama `gh-pages`, compatible con la configuracion actual del entorno `github-pages`.
 
-1. Inicio.
-2. Nueva lectura ECG.
-3. Seleccion de tipo de captura.
-4. Camara guiada simulada.
-5. Revision de calidad de imagen.
-6. Analisis simulado.
-7. Resultado critico.
-8. Resultado no interpretable.
-9. Registro clinico minimo.
-10. Resumen para compartir.
-11. Historial.
-12. Confirmacion intrahospitalaria.
+URL esperada:
 
-## Simulaciones disponibles
+```text
+https://markoubilla.github.io/ecg-asistido-demo/
+```
 
-En el panel lateral se puede alternar entre:
+## Netlify
 
-- `ECG interpretable`: simula una captura suficiente y muestra una alerta critica.
-- `Forzar mala imagen`: simula una foto deficiente y muestra resultado no interpretable.
+El proyecto incluye:
 
-## Preguntas sugeridas para revision medica
+```text
+netlify.toml
+```
 
-- El flujo es realista para atencion prehospitalaria o rural?
-- Los textos son clinicamente prudentes?
-- El resultado tipo semaforo es util o podria inducir errores?
-- Que hallazgos deberia priorizar el MVP?
-- Que datos clinicos minimos faltan?
-- Que mensajes deberian cambiarse antes de una prueba piloto?
-- En que escenarios no deberia usarse la aplicacion?
+Configuracion:
 
-## Documentos incluidos
+- Build command: vacio
+- Publish directory: `.`
 
-La carpeta `docs/` incluye:
+Para publicar:
 
-- Especificacion inicial del proyecto.
-- Pitch ejecutivo.
-- Flujo de pantallas del prototipo.
+1. Entrar a Netlify.
+2. Importar el repositorio `markoubilla/ecg-asistido-demo`.
+3. Usar la configuracion detectada desde `netlify.toml`.
+4. Deploy.
 
-## Proximos pasos tecnicos
+## Validacion pendiente antes de uso real
 
-Una vez validado con usuarios clinicos, el siguiente paso seria construir un MVP real con:
-
-- App movil en Flutter o React Native.
-- Captura real de camara.
-- Control de calidad de imagen.
-- Backend seguro.
-- Registro auditable de casos.
-- Validacion clinica supervisada.
-- Modelo de vision computacional entrenado y evaluado con datos reales.
+- Revision por urgenciologos, cardiologos y equipos prehospitalarios.
+- Validacion prospectiva con ECG reales.
+- Analisis de falsos negativos y falsos positivos.
+- Protocolos de uso institucional.
+- Seguridad de datos y consentimiento.
+- Trazabilidad y auditoria.
+- Revision regulatoria/legal.
 
 ## Estado
 
-Demo conceptual, no clinica, no diagnostica.
+Version funcional demostrativa para revision clinica y presentacion a futuros usuarios.
 
